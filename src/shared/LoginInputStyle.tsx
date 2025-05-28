@@ -1,0 +1,1 @@
+export const LoginInputStyle = 'w-full md:w-[440px] h-[44px] px-4 py-[10px] rounded-lg border border-gray shadow-sm focus:outline-none focus:ring-2 focus:ring-brightblue/30 text-blackblue placeholder-mediumgray bg-white';

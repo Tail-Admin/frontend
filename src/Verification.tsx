@@ -4,11 +4,12 @@ import { AuthFooter } from './shared/AuthFooter'
 import { LogoSide } from './shared/LogoSide'
 import { ThemeButton } from './shared/ThemeButton'
 import { VerificationInput } from './shared/VerificationInputs'
+import { TopContainerStyle, MiddleContainerStyle, InnerContainerStyle } from './shared/PageContainerStyles'
 
 export const Verification = () => {
-return <div className='relative font-primary flex justify-center h-[800px]'>
-            <div className='flex items-center'>
-              <div className='w-[360px] md:w-[735px] h-full'>
+return <div className={TopContainerStyle}>
+            <div className={MiddleContainerStyle}>
+              <div className={InnerContainerStyle}>
                 <BackButton />
                 <div className='flex items-center justify-center flex-col'>
 

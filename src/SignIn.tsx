@@ -8,11 +8,13 @@ import { LogoSide } from './shared/LogoSide'
 import { ThemeButton } from './shared/ThemeButton'
 import googleLogo from './assets/GoogleLogo.svg'
 import xLogo from './assets/Xlogo.svg'
+import { LoginInputStyle } from './shared/LoginInputStyle'
+import { TopContainerStyle, MiddleContainerStyle, InnerContainerStyle } from './shared/PageContainerStyles'
 
 export const SignIn = () => {
-return <div className='relative font-primary flex justify-center h-[800px]'>
-          <div className='flex items-center'>
-            <div className='w-[360px] md:w-[735px] h-full'>
+return <div className={TopContainerStyle}>
+          <div className={MiddleContainerStyle}>
+            <div className={InnerContainerStyle}>
               <BackButton />
               <div className='flex items-center justify-center flex-col'>
 
@@ -33,34 +35,12 @@ return <div className='relative font-primary flex justify-center h-[800px]'>
                     <Input placeholder='Enter your email' 
                       inputName='Email'
 
-                      className='w-full  md:w-[440px] h-[44px]
-                        px-4 py-[10px]       
-                        rounded-lg           
-                        border               
-                        border-gray     
-                        shadow-sm           
-                        focus:outline-none   
-                        focus:ring-2         
-                        focus:ring-brightblue/30
-                        text-blackblue       
-                        placeholder-mediumgray
-                        bg-white' />
+                      className={LoginInputStyle}  />
 
                     <Input placeholder='Enter your password' 
                       inputName='Password'
 
-                      className='w-full md:w-[440px] h-[44px]
-                        px-4 py-[10px]       
-                        rounded-lg           
-                        border               
-                        border-gray     
-                        shadow-sm           
-                        focus:outline-none   
-                        focus:ring-2         
-                        focus:ring-brightblue/30
-                        text-blackblue       
-                        placeholder-mediumgray 
-                        bg-white' />
+                      className={LoginInputStyle} />
                   </div>
                   <div className='flex justify-between w-full my-[20px]'>
                         <Checkbox checkboxText='Keep me logged in' className='w-5 h-5 accent-brightblue rounded-full border-[1.25px] border-solid border-gray'/>
