@@ -14,13 +14,6 @@ export const LogoSide = () => {
         <img src={topSquares} className='absolute top-0 right-0'/>
         <img src={bottomSquares} className='absolute bottom-0 right-[255px]'/>
         
-        <ThemeButton className='
-                    absolute 
-                    right-[20px] bottom-[20px]
-                    md:right-[24px] md:bottom-[24px] 
-                    flex justify-center items-center 
-                    rounded-full 
-                    w-[52px] h-[52px] 
-                    bg-brightblue'/>
+        <ThemeButton/>
     </div>
 }

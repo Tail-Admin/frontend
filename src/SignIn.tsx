@@ -8,7 +8,6 @@ import { LogoSide } from './shared/LogoSide'
 import { ThemeButton } from './shared/ThemeButton'
 import googleLogo from './assets/GoogleLogo.svg'
 import xLogo from './assets/Xlogo.svg'
-import { LoginInputStyle } from './shared/LoginInputStyle'
 import { TopContainerStyle, MiddleContainerStyle, InnerContainerStyle } from './shared/PageContainerStyles'
 
 export const SignIn = () => {
@@ -35,12 +34,12 @@ return <div className={TopContainerStyle}>
                     <Input placeholder='Enter your email' 
                       inputName='Email'
 
-                      className={LoginInputStyle}  />
+                       />
 
                     <Input placeholder='Enter your password' 
                       inputName='Password'
 
-                      className={LoginInputStyle} />
+                      />
                   </div>
                   <div className='flex justify-between w-full my-[20px]'>
                         <Checkbox checkboxText='Keep me logged in' className='w-5 h-5 accent-brightblue rounded-full border-[1.25px] border-solid border-gray'/>
@@ -60,14 +59,7 @@ return <div className={TopContainerStyle}>
           <LogoSide/>
           </div>
               <div className='md:hidden'>
-                  <ThemeButton className='
-                    absolute 
-                    right-[20px] bottom-[20px]
-                    md:right-[24px] md:bottom-[24px] 
-                    flex justify-center items-center 
-                    rounded-full 
-                    w-[52px] h-[52px] 
-                    bg-brightblue'/>
+                  <ThemeButton/>
               </div>
 
         </div>

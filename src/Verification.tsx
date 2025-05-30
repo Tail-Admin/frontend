@@ -46,14 +46,7 @@ return <div className={TopContainerStyle}>
           <LogoSide/>
             </div>
               <div className='md:hidden'>
-                  <ThemeButton className='
-                    absolute 
-                    right-[20px] bottom-[20px]
-                    md:right-[24px] md:bottom-[24px] 
-                    flex justify-center items-center 
-                    rounded-full 
-                    w-[52px] h-[52px] 
-                    bg-brightblue'/>
+                  <ThemeButton/>
               </div>
 
         </div>

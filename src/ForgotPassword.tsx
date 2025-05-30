@@ -4,7 +4,6 @@ import { BackButton } from './shared/BackButton'
 import { AuthFooter } from './shared/AuthFooter'
 import { LogoSide } from './shared/LogoSide'
 import { ThemeButton } from './shared/ThemeButton'
-import { LoginInputStyle } from './shared/LoginInputStyle'
 import { TopContainerStyle, MiddleContainerStyle, InnerContainerStyle } from './shared/PageContainerStyles'
 
 export const ForgotPassword = () => {
@@ -24,7 +23,7 @@ return <div className={TopContainerStyle}>
                       <Input placeholder='Enter your email' 
                       inputName='Email'
 
-                      className={LoginInputStyle} />
+                      />
 
                     </div>
                     <div className='flex items-center justify-center'>
@@ -41,14 +40,7 @@ return <div className={TopContainerStyle}>
             <LogoSide/>
             </div>
               <div className='md:hidden'>
-                  <ThemeButton className='
-                    absolute 
-                    right-[20px] bottom-[20px]
-                    md:right-[24px] md:bottom-[24px] 
-                    flex justify-center items-center 
-                    rounded-full 
-                    w-[52px] h-[52px] 
-                    bg-brightblue'/>
+                  <ThemeButton/>
               </div>
 
         </div>
