@@ -9,9 +9,47 @@ import { ThemeButton } from './shared/ThemeButton'
 import googleLogo from './assets/GoogleLogo.svg'
 import xLogo from './assets/Xlogo.svg'
 import { MiddleContainerStyle, InnerContainerStyle } from './shared/PageContainerStyles'
+import { useState } from 'react'
+import { useRegistrationMutation } from './api/authApi.ts'
+import type { RegistrationRequest } from './interfaces/IApi';
 
 export const SignUp = () => {
-return <div className='relative font-primary flex justify-center h-[900px]'>
+
+  const [inputData, setInputData] = useState<RegistrationRequest>({
+    firstName:'',
+    lastName: '',
+    username: '',
+    password: ''
+  });
+
+  const [registration, { isLoading, error }] = useRegistrationMutation();
+
+  const handleRegister = async (inputData: RegistrationRequest) => {
+   try { 
+    await registration(inputData).unwrap();
+   }
+    catch(error) {
+    console.error(error);
+   }
+  }
+
+  const handleFirstNameChange = (value: string) => {
+    setInputData(prev => ({...prev, firstName: value}))
+  }
+ 
+  const handleLastNameChange = (value: string) => {
+    setInputData(prev => ({...prev, lastName: value}))
+  }
+
+  const handleEmailChange = (value: string) => {
+    setInputData(prev => ({...prev, username: value}))
+  }
+
+  const handlePasswordChange = (value: string) => {
+    setInputData(prev => ({...prev, password: value}))
+  }
+
+  return <div className='relative font-primary flex justify-center h-[900px]'>
             <div className={MiddleContainerStyle}>
               <div className={InnerContainerStyle}>
                 <BackButton />
@@ -30,9 +68,12 @@ return <div className='relative font-primary flex justify-center h-[900px]'>
 
               <div className='flex items-center justify-center flex-col gap-3 w-full'>
                 <div className='flex items-center justify-between flex-row gap-3'>
-                    
+                
                   <Input placeholder='Enter your first name' 
                   inputName='First name'
+                  type='text'
+                  value={inputData.firstName}
+                  onChange={handleFirstNameChange}
 
                   className='w-full  md:w-[210px] h-[44px]
                     px-4 py-[10px]       
@@ -49,6 +90,9 @@ return <div className='relative font-primary flex justify-center h-[900px]'>
                     
                   <Input placeholder='Enter your last name' 
                   inputName='Last name'
+                  type='text'
+                  value={inputData.lastName}
+                  onChange={handleLastNameChange}
 
                   className='w-full  md:w-[210px] h-[44px]
                     px-4 py-[10px]       
@@ -65,12 +109,18 @@ return <div className='relative font-primary flex justify-center h-[900px]'>
                 </div>
 
                   <Input placeholder='Enter your email' 
+                  type='email'
                   inputName='Email'
+                  value={inputData.username}
+                  onChange={handleEmailChange}
 
                    />
 
-                  <Input placeholder='Enter your password' 
+                  <Input placeholder='Enter your password'
+                  type='password' 
                   inputName='Password'
+                  value={inputData.password}
+                  onChange={handlePasswordChange}
 
                    />
               </div>
@@ -78,11 +128,18 @@ return <div className='relative font-primary flex justify-center h-[900px]'>
                     <Checkbox checkboxText="By creating an account i agree to yours Terms Of Service and Privacy Policy" className='w-5 h-5 accent-brightblue rounded-full border-[1.25px] border-solid border-gray'/>      
               </div>
               <div className='flex items-center justify-center'>
-                <MainButton buttonText='Sign Up' className='bg-brightblue 
-                          flex items-center justify-center
-                          text-white w-[280px] md:w-[440px] h-[44px] 
-                          rounded-lg border
-                          font-medium'/>
+                <MainButton buttonText='Sign Up' 
+                            className='bg-brightblue 
+                              flex items-center justify-center
+                               text-white w-[280px] md:w-[440px] h-[44px] 
+                                rounded-lg border
+                                font-medium
+                                transition-transform active:scale-95 active:opacity-75'
+                            onClick={() => handleRegister(inputData)}
+                            disabled={isLoading}    
+                                />
+                            
+              
               </div>
               <AuthFooter text='Already have an account?' link='Sign In' url='' className='flex justify-center md:justify-start items-center gap-2 w-full mt-[20px] text-sm'/>
                   </div>
@@ -95,5 +152,5 @@ return <div className='relative font-primary flex justify-center h-[900px]'>
             </div>
 
         </div>
-}
+  }
 
