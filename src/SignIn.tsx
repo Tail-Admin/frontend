@@ -9,8 +9,36 @@ import { ThemeButton } from './shared/ThemeButton'
 import googleLogo from './assets/GoogleLogo.svg'
 import xLogo from './assets/Xlogo.svg'
 import { TopContainerStyle, MiddleContainerStyle, InnerContainerStyle } from './shared/PageContainerStyles'
+import { useState } from 'react'
+import { useLoginMutation } from './api/authApi'
+import type { LoginRequest } from './interfaces/IApi'
 
 export const SignIn = () => {
+
+const [inputData, setInputData] = useState<LoginRequest>({
+    username: '',
+    password: ''
+  });
+
+const [login, {isLoading, error}] = useLoginMutation();
+
+const handleLogin = async (inputData: LoginRequest) => {
+  try {
+    await login(inputData).unwrap()
+  }
+  catch (error) {
+    console.error(error)
+  }
+} 
+
+const handleEmailChange = (value: string) => {
+    setInputData(prev => ({...prev, username: value}))
+  }
+
+const handlePasswordChange = (value: string) => {
+    setInputData(prev => ({...prev, password: value}))
+  }
+
 return <div className={TopContainerStyle}>
           <div className={MiddleContainerStyle}>
             <div className={InnerContainerStyle}>
@@ -33,11 +61,17 @@ return <div className={TopContainerStyle}>
                   <div className='flex items-center justify-center flex-col gap-3 w-full'>
                     <Input placeholder='Enter your email' 
                       inputName='Email'
+                      type='email'
+                      value={inputData.username}
+                      onChange={handleEmailChange}
 
                        />
 
                     <Input placeholder='Enter your password' 
+                      type='password' 
                       inputName='Password'
+                      value={inputData.password}
+                      onChange={handlePasswordChange}
 
                       />
                   </div>
@@ -50,7 +84,11 @@ return <div className={TopContainerStyle}>
                                 flex items-center justify-center
                                 text-white w-[280px] md:w-[440px] h-[44px] 
                                 rounded-lg border
-                                font-medium'/>
+                                font-medium
+                                transition-transform active:scale-95 active:opacity-75'
+                                onClick={() => handleLogin(inputData)}
+                                disabled={isLoading}
+                                />
                   </div>
                   <AuthFooter text='Don’t have an account?' link='Sign Up' url='' className='flex justify-center md:justify-start items-center gap-2 w-full mt-[20px] text-sm'/>
                 </div>

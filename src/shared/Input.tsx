@@ -3,10 +3,13 @@ import { useId } from "react"
 interface InputProps {
     inputName: string
     placeholder: string,
-    className?: string
+    type: string,
+    className?: string,
+    value: string,
+    onChange: (value: string) => void
 }
 
-export const Input = ({inputName, placeholder, className='w-full md:w-[440px] h-[44px] px-4 py-[10px] rounded-lg border border-gray shadow-sm focus:outline-none focus:ring-2 focus:ring-brightblue/30 text-blackblue placeholder-mediumgray bg-white'}: InputProps) => {
+export const Input = ({inputName, placeholder, type, value, onChange, className='w-full md:w-[440px] h-[44px] px-4 py-[10px] rounded-lg border border-gray shadow-sm focus:outline-none focus:ring-2 focus:ring-brightblue/30 text-blackblue placeholder-mediumgray bg-white'}: InputProps) => {
     const id = useId();
     return (
         <div id={id} className='w-full md:h-[70px]'>
@@ -18,6 +21,9 @@ export const Input = ({inputName, placeholder, className='w-full md:w-[440px] h-
              id={id}
              placeholder={placeholder}
              className={className}
+             type={type}
+             value={value}
+             onChange={(event) => onChange(event.target.value)}
         ></input>
         </div>
     )
